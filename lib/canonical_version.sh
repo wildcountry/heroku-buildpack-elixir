@@ -12,7 +12,7 @@ erlang_builds_url() {
 fetch_erlang_versions() {
   if [ "$STACK" = "heroku-20" ]; then
     url="https://repo.hex.pm/builds/otp/ubuntu-20.04/builds.txt"
-    curl -s "$url" | awk '/^OTP-([0-9.]+ )/ {print substr($1,5)}'
+    curl -s "$url" | awk '/^OTP-([0-9.rc-]+ )/ {print substr($1,5)}'
   else
     url="https://raw.githubusercontent.com/HashNuke/heroku-buildpack-elixir-otp-builds/master/otp-versions"
     curl -s "$url"
@@ -40,4 +40,3 @@ check_erlang_version() {
     exit 1
   fi
 }
-

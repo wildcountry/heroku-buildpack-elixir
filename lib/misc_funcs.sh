@@ -132,7 +132,7 @@ function clear_cached_files() {
 }
 
 function fix_erlang_version() {
-  erlang_version=$(echo "$erlang_version" | sed 's/[^0-9.]*//g')
+  erlang_version=$(echo "$erlang_version" | sed 's/[^0-9.rc-]*//g')
 }
 
 function fix_elixir_version() {
@@ -147,7 +147,7 @@ function fix_elixir_version() {
     # If we detect a version string (e.g. 1.14 or 1.14.0) we prefix it with "v"
     if [[ ${elixir_version} =~ ^[0-9]+\.[0-9]+ ]]; then
       # strip out any non-digit non-dot characters
-      elixir_version=$(echo "$elixir_version" | sed 's/[^0-9.]*//g')
+      elixir_version=$(echo "$elixir_version" | sed 's/[^0-9.rc-]*//g')
       elixir_version=v${elixir_version}
     fi
 
